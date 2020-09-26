@@ -1,6 +1,5 @@
 package pl.dysio9;
 
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -37,6 +36,8 @@ public class Main {
     }
 
     public String createNumberLines (int num, char ch) {
+       String result = "";
+
         Map<Integer, String> numberCharsMap = new HashMap<>();
         {
         numberCharsMap.put(1, " " + ch + ch + ch + ch + " ");
@@ -102,14 +103,19 @@ public class Main {
 
 
         for (int i = 1; i < 7; i++) {
-            System.out.print(ch + " ");
+            //System.out.print(ch + " ");
+            result += String.valueOf(ch);
+            result += " ";
             for (int j = 5; j > 0; j--) {
-                System.out.print(numberCharsMap.get(getNthDigit(num, 10, j)*10 + i) + " ");
+                //System.out.print(numberCharsMap.get(getNthDigit(num, 10, j)*10 + i) + " ");
+                result += String.valueOf(numberCharsMap.get(getNthDigit(num, 10, j)*10 + i) + " ");
             }
-            System.out.println(ch);
+            //System.out.println(ch);
+            result += String.valueOf(ch);
+            result += "\n";
         }
 
-        return "abra sde";
+        return result;
     }
 
     public void printNumber(int num, char ch) {
@@ -117,7 +123,7 @@ public class Main {
 
     System.out.print(createFirstLine(ch));
     System.out.print(createSecondLine(ch));
-    createNumberLines(num, ch);
+    System.out.print(createNumberLines(num, ch));
     System.out.print(createSecondLine(ch));
     System.out.print(createFirstLine(ch));
     }
