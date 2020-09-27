@@ -7,23 +7,32 @@ import java.util.Scanner;
 public class Main {
 
     public Main(int num, char ch) {
-        printNumber(num, ch);
+        System.out.println(printNumber(num, ch));
     }
 
     public String createFirstLine(char ch) {
         String result = "";
 
-        for (int i = 0; i < 38; i++) {
+        for (int i = 0; i < 40; i++) {
             result += String.valueOf(ch);
         }
         result += "\n";
         return result;
     }
 
+    public String createLastLine(char ch) {
+        String result = "";
+
+        for (int i = 0; i < 40; i++) {
+            result += String.valueOf(ch);
+        }
+        return result;
+    }
+
     public String createSecondLine(char ch) {
         String result = String.valueOf(ch);
 
-        for (int i = 0; i < 36; i++) {
+        for (int i = 0; i < 38; i++) {
             result += " ";
         }
         result += String.valueOf(ch);
@@ -101,16 +110,13 @@ public class Main {
         numberCharsMap.put(95, "  " + ch + ch + "  ");
         numberCharsMap.put(96, " " + ch + ch + "   ");}
 
-
         for (int i = 1; i < 7; i++) {
-            //System.out.print(ch + " ");
             result += String.valueOf(ch);
-            result += " ";
+            result += "  ";
             for (int j = 5; j > 0; j--) {
-                //System.out.print(numberCharsMap.get(getNthDigit(num, 10, j)*10 + i) + " ");
                 result += String.valueOf(numberCharsMap.get(getNthDigit(num, 10, j)*10 + i) + " ");
             }
-            //System.out.println(ch);
+            result += " ";
             result += String.valueOf(ch);
             result += "\n";
         }
@@ -118,14 +124,8 @@ public class Main {
         return result;
     }
 
-    public void printNumber(int num, char ch) {
-        String result = "";
-
-    System.out.print(createFirstLine(ch));
-    System.out.print(createSecondLine(ch));
-    System.out.print(createNumberLines(num, ch));
-    System.out.print(createSecondLine(ch));
-    System.out.print(createFirstLine(ch));
+    public String printNumber(int num, char ch) {
+        return createFirstLine(ch) + createSecondLine(ch) + createNumberLines(num, ch) + createSecondLine(ch) + createLastLine(ch);
     }
 
     public static void main(String[] args) {
@@ -134,6 +134,6 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
-        new Main(input.nextInt(), '#');
+        new Main(input.nextInt(), '$');
     }
 }
